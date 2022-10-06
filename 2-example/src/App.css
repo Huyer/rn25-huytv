@@ -37,51 +37,6 @@
   }
 }
 
-* {
-  padding: 0px;
-  margin: 0px;
-  box-sizing: border-box;
-}
-
-#header {
+.bg-ccc {
   background-color: #ccc;
-  height: 100px;
-  font-size: 24px;
-  font-weight: 600;
-  color: white;
-}
-
-#main {
-  padding-top: 32px;
-  padding-bottom: 32px;
-  width: 100%;
-}
-
-.row {
-  width: 100%;
-}
-
-ul li {
-  list-style-type: none;
-  border-bottom: 1px solid #ccc;
-  font-size: 24px;
-  padding-top: 16px;
-  padding-bottom: 16px;
-}
-
-img {
-  width: 100%;
-}
-
-.intro {
-  background-color: #61dafb;
-}
-
-#footer {
-  background-color: #ccc;
-  height: 100px;
-}
-
-#footer h2 {
-  text-align: center;
 }

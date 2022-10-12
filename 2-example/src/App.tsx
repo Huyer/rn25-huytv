@@ -1,12 +1,16 @@
-import React from "react";
-import logo from "./logo.svg";
 import "./App.css";
+import Header from "./Components/Header";
+import Footer from "./Components/Footer";
+import Basic01 from "./Homeworks/Section02/Basic01";
+import Basic02 from "./Homeworks/Section02/Basic02";
+import Basic03 from "./Homeworks/Section02/Basic03";
 
 function App() {
+  let isLogin = false;
   return (
-    <div>
-      <div className="bg-ccc text-white fs-1 text-center">The Pulpit Rock</div>
-      <div className="row pt-5">
+    <>
+      {/* <Header isLogin={isLogin} />
+      <div className="row">
         <div className="col-md-4">
           <p className="border-bottom py-4 ps-3">The Driver</p>
           <p className="border-bottom py-4 ps-3">The Driver</p>
@@ -25,7 +29,7 @@ function App() {
             alt=""
           />
         </div>
-        <div className="col-md-4 bg-secondary h-50">
+        <div className="col-md-4 bg-secondary pr-0">
           <h1>What?</h1>
           <p>The Walk to the Pulpit Rock will take your</p>
           <h1>Where?</h1>
@@ -34,8 +38,12 @@ function App() {
           <p>The Walk is free</p>
         </div>
       </div>
-      <div className="bg-ccc text-white fs-1 text-center mb-0">Footer</div>
-    </div>
+      <Footer /> */}
+
+      <Basic01 />
+      <Basic02 />
+      <Basic03 />
+    </>
   );
 }
 export default App;

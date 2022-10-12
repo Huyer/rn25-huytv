@@ -40,3 +40,7 @@
 .bg-ccc {
   background-color: #ccc;
 }
+
+.max-width-500 {
+  max-width: 500px;
+}

@@ -4,9 +4,18 @@ import Footer from "./Components/Footer";
 import Basic01 from "./Homeworks/Section02/Basic01";
 import Basic02 from "./Homeworks/Section02/Basic02";
 import Basic03 from "./Homeworks/Section02/Basic03";
+import BtNumber from "./Components/Bt/BtNumber";
+import BlockUi01 from "./Homeworks/Section02/BlockUi01";
 
 function App() {
   let isLogin = false;
+  let propterty1 = {
+    text: "text1",
+    color1: "red",
+    color2: "blue",
+    percentage: 40,
+  };
+
   return (
     <>
       {/* <Header isLogin={isLogin} />
@@ -38,11 +47,13 @@ function App() {
           <p>The Walk is free</p>
         </div>
       </div>
-      <Footer /> */}
+      <Footer />
 
       <Basic01 />
       <Basic02 />
       <Basic03 />
+
+      <BtNumber /> */}
     </>
   );
 }

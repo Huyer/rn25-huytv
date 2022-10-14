@@ -6,54 +6,22 @@ import Basic02 from "./Homeworks/Section02/Basic02";
 import Basic03 from "./Homeworks/Section02/Basic03";
 import BtNumber from "./Components/Bt/BtNumber";
 import BlockUi01 from "./Homeworks/Section02/BlockUi01";
-
+import BlockUi4 from "./Homeworks/Section02/BlockUi4";
+import { FaFacebookF } from "react-icons/fa";
 function App() {
-  let isLogin = false;
-  let propterty1 = {
-    text: "text1",
-    color1: "red",
-    color2: "blue",
-    percentage: 40,
-  };
-
   return (
     <>
-      {/* <Header isLogin={isLogin} />
-      <div className="row">
-        <div className="col-md-4">
-          <p className="border-bottom py-4 ps-3">The Driver</p>
-          <p className="border-bottom py-4 ps-3">The Driver</p>
-          <p className="border-bottom py-4 ps-3">The Driver</p>
-          <p className="border-bottom py-4 ps-3">The Driver</p>
-        </div>
-        <div className="col-md-4">
-          <h1>The Walk</h1>
-          <p>
-            The Walk to the Pulpit Rock will take your to the Pulpit Rock will
-            take your to the Pulpit Rock will take your
-          </p>
-          <img
-            className="w-100"
-            src="https://s27363.pcdn.co/wp-content/uploads/2019/09/Pulpit-Rock.jpg.optimal.jpg"
-            alt=""
-          />
-        </div>
-        <div className="col-md-4 bg-secondary pr-0">
-          <h1>What?</h1>
-          <p>The Walk to the Pulpit Rock will take your</p>
-          <h1>Where?</h1>
-          <p>The Walk to the Pulpit Rock will take your</p>
-          <h1>Price?</h1>
-          <p>The Walk is free</p>
-        </div>
-      </div>
-      <Footer />
+      <BlockUi4
+        text="today's visitors"
+        totalNum={25000}
+        percentage1={30}
+        percentage2={30}
+        percentage3={30}
+        percentage4={30}
+        percentage5={30}
+      />
 
-      <Basic01 />
-      <Basic02 />
-      <Basic03 />
-
-      <BtNumber /> */}
+      <BlockUi01 text="text" color1="violet" color2="pink" percentage={50} />
     </>
   );
 }

@@ -1,27 +1,26 @@
 import "./App.css";
-import Header from "./Components/Header";
-import Footer from "./Components/Footer";
-import Basic01 from "./Homeworks/Section02/Basic01";
-import Basic02 from "./Homeworks/Section02/Basic02";
-import Basic03 from "./Homeworks/Section02/Basic03";
-import BtNumber from "./Components/Bt/BtNumber";
-import BlockUi01 from "./Homeworks/Section02/BlockUi01";
-import BlockUi4 from "./Homeworks/Section02/BlockUi4";
-import { FaFacebookF } from "react-icons/fa";
+import FormTest from "./Components/Bt/FormTest";
+// import Header from "./Components/Header";
+// import Footer from "./Components/Footer";
+// import Basic01 from "./Homeworks/Section02/Basic01";
+// import Basic02 from "./Homeworks/Section02/Basic02";
+// import Basic03 from "./Homeworks/Section02/Basic03";
+// import BtNumber from "./Components/Bt/BtNumber";
+// import BlockUi01 from "./Homeworks/Section02/BlockUi01";
+// import BlockUi04 from "./Homeworks/Section02/BlockUi04";
+// import * as Icons from "react-icons/fa";
+// import BlockUi03 from "./Homeworks/Section02/BlockUi03";
+// import LikeBtn from "./Homeworks/Section05/LikeBtn";
+// import Social from "./Homeworks/Section02/BlockUi03";
+// import Practive from "./Components/Practive";
+// import RateBtn from "./Homeworks/Section05/RateBtn";
+// import LikeBtnClass from "./Homeworks/Section03/LikeBtnClass";
+// import RateBtnClass from "./Homeworks/Section03/RateBtnClass";
+// import TestNetworking from "./Components/TestNetworking";
 function App() {
   return (
     <>
-      <BlockUi4
-        text="today's visitors"
-        totalNum={25000}
-        percentage1={30}
-        percentage2={30}
-        percentage3={30}
-        percentage4={30}
-        percentage5={30}
-      />
-
-      <BlockUi01 text="text" color1="violet" color2="pink" percentage={50} />
+      <FormTest />
     </>
   );
 }

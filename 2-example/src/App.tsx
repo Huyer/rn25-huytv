@@ -1,5 +1,6 @@
 import "./App.css";
 import FormTest from "./Components/Bt/FormTest";
+import Form01 from "./Homeworks/Section06/Form01";
 // import Header from "./Components/Header";
 // import Footer from "./Components/Footer";
 // import Basic01 from "./Homeworks/Section02/Basic01";
@@ -20,7 +21,7 @@ import FormTest from "./Components/Bt/FormTest";
 function App() {
   return (
     <>
-      <FormTest />
+      <Form01 />
     </>
   );
 }

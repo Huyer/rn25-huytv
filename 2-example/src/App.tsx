@@ -1,6 +1,7 @@
 import "./App.css";
-import FormTest from "./Components/Bt/FormTest";
+// import FormTest from "./Components/Bt/FormTest";
 import Form01 from "./Homeworks/Section06/Form01";
+import FormTestGet from "./Homeworks/Section06/FormTestGet";
 // import Header from "./Components/Header";
 // import Footer from "./Components/Footer";
 // import Basic01 from "./Homeworks/Section02/Basic01";

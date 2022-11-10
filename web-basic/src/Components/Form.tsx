@@ -29,8 +29,7 @@ const Form = (props: Props) => {
       })
         .then((response) => response.json())
         .then((json) => {
-          // Xử lý kết quả JSON ở đây
-          console.log("gg");
+          // Xử lý kết quả JSON ở đâ
         })
         .catch((error) => {
           // Nếu có lỗi

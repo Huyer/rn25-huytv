@@ -1,14 +1,14 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { HomeOutlined, DashboardOutlined, UnorderedListOutlined, UserAddOutlined, PoweroffOutlined } from "@ant-design/icons";
+import { MenuOutlined, UnorderedListOutlined, UserAddOutlined, PoweroffOutlined } from "@ant-design/icons";
 import { Menu } from "antd";
 import Content from "./Content";
 
 function SideMenu() {
   const navi = useNavigate();
   const items = [
-    { label: "Home", key: "/", icon: <HomeOutlined /> },
-    { label: "Dashboard", key: "/dashboard", icon: <DashboardOutlined /> },
+    { label: "Category", key: "/", icon: <MenuOutlined /> },
+    { label: "Dashboard", key: "/dashboard", icon: <MenuOutlined /> },
     {
       label: "Users List",
       key: "/userslist",

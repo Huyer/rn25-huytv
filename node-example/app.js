@@ -3,6 +3,7 @@ var express = require("express");
 var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
+const cors = require("cors");
 
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
@@ -12,7 +13,6 @@ var usersCustomers = require("./routes/customers");
 var usersEmplyees = require("./routes/employees");
 var usersProducts = require("./routes/products");
 var usersOrders = require("./routes/orders");
-var usersOrderDetails = require("./routes/orderDetails");
 
 var app = express();
 
@@ -26,6 +26,11 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
+app.use(
+  cors({
+    origin: "*",
+  }),
+);
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
 app.use("/categories", usersCategories);
@@ -34,7 +39,6 @@ app.use("/customers", usersCustomers);
 app.use("/employees", usersEmplyees);
 app.use("/products", usersProducts);
 app.use("/orders", usersOrders);
-app.use("/orderdetails", usersOrderDetails);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

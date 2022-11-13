@@ -4,7 +4,6 @@ const Customers = require("./customers");
 const Employees = require("./employees");
 const Products = require("./products");
 const Orders = require("./orders");
-const OrdersDetails = require("./orderDetails");
 
 module.exports = {
   Category,
@@ -13,5 +12,4 @@ module.exports = {
   Employees,
   Products,
   Orders,
-  OrdersDetails,
 };

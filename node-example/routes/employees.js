@@ -37,14 +37,9 @@ router.get("/:id", function (req, res, next) {
 
 router.patch("/:id", function (req, res, next) {
   const { id } = req.params;
-  const { firstName, lastName, phoneNumber, address, email, birthday } =
-    req.body;
+  const { firstName, lastName, phoneNumber, address, email, birthday } = req.body;
   try {
-    Employees.findByIdAndUpdate(
-      id,
-      { firstName, lastName, phoneNumber, address, email, birthday },
-      { new: true }
-    ).then((result) => {
+    Employees.findByIdAndUpdate(id, { firstName, lastName, phoneNumber, address, email, birthday }, { new: true }).then((result) => {
       res.send(result);
     });
   } catch (error) {

@@ -1,6 +1,21 @@
 const mongoose = require("mongoose");
 const { Schema, model } = mongoose;
 
+const orderDetailSchema = new Schema({
+  productId: { type: Schema.Types.ObjectId, ref: "Product", required: true },
+  quantity: { type: Number, require: true, min: 0 },
+});
+
+orderDetailSchema.virtual("product", {
+  ref: "Product",
+  localField: "productId",
+  foreignField: "_id",
+  justOne: true,
+});
+
+orderDetailSchema.set("toObject", { virtuals: true });
+orderDetailSchema.set("toJSON", { virtuals: true });
+
 const ordersSchema = new Schema({
   createdDate: { type: Date, require: true, default: Date.now },
   shippedDate: { type: Date },
@@ -24,7 +39,26 @@ const ordersSchema = new Schema({
     ref: "Employees",
     required: true,
   },
+  orderDetails: [orderDetailSchema],
 });
 
+ordersSchema.virtual("customer", {
+  ref: "Customer",
+  localField: "customerId",
+  foreignField: "_id",
+  justOne: true,
+});
+
+ordersSchema.virtual("employee", {
+  ref: "Employee",
+  localField: "employeeId",
+  foreignField: "_id",
+  justOne: true,
+});
+
+// Virtuals in console.log()
+ordersSchema.set("toObject", { virtuals: true });
+// Virtuals in JSON
+ordersSchema.set("toJSON", { virtuals: true });
 const Oders = model("Oders", ordersSchema);
 module.exports = Oders;

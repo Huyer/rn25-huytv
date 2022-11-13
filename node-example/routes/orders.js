@@ -37,16 +37,7 @@ router.get("/:id", function (req, res, next) {
 
 router.patch("/:id", function (req, res, next) {
   const { id } = req.params;
-  const {
-    createdDate,
-    shippedDate,
-    status,
-    description,
-    shippingAddress,
-    paymentType,
-    customerId,
-    employeeId,
-  } = req.body;
+  const { createdDate, shippedDate, status, description, shippingAddress, paymentType, customerId, employeeId } = req.body;
   try {
     Orders.findByIdAndUpdate(
       id,
@@ -60,7 +51,7 @@ router.patch("/:id", function (req, res, next) {
         customerId,
         employeeId,
       },
-      { new: true }
+      { new: true },
     ).then((result) => {
       res.send(result);
     });

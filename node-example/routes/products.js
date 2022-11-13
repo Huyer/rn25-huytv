@@ -17,9 +17,12 @@ router.post("/", function (req, res, next) {
 
 router.get("/", function (req, res, next) {
   try {
-    Products.find().then((result) => {
-      res.send(result);
-    });
+    Products.find()
+      .populate("category")
+      .populate("supplier")
+      .then((result) => {
+        res.send(result);
+      });
   } catch (err) {
     res.status(500).send(err);
   }
@@ -27,9 +30,12 @@ router.get("/", function (req, res, next) {
 
 router.get("/:id", function (req, res, next) {
   try {
-    Products.findById(req.params.id).then((result) => {
-      res.send(result);
-    });
+    Products.findById(req.params.id)
+      .populate("category")
+      .populate("supplier")
+      .then((result) => {
+        res.send(result);
+      });
   } catch (error) {
     res.send(error);
   }
@@ -37,14 +43,9 @@ router.get("/:id", function (req, res, next) {
 
 router.patch("/:id", function (req, res, next) {
   const { id } = req.params;
-  const { name, price, discount, stock, categoryId, supplierId, description } =
-    req.body;
+  const { name, price, discount, stock, categoryId, supplierId, description } = req.body;
   try {
-    Products.findByIdAndUpdate(
-      id,
-      { name, price, discount, stock, categoryId, supplierId, description },
-      { new: true }
-    ).then((result) => {
+    Products.findByIdAndUpdate(id, { name, price, discount, stock, categoryId, supplierId, description }, { new: true }).then((result) => {
       res.send(result);
     });
   } catch (error) {

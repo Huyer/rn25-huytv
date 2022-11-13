@@ -15,5 +15,27 @@ const productsSchema = new Schema({
   description: { type: String },
 });
 
+productsSchema.virtual("total").get(function () {
+  return (this.price * (100 - this.discount)) / 100;
+});
+
+productsSchema.virtual("category", {
+  ref: "Category",
+  localField: "categoryId",
+  foreignField: "_id",
+  justOne: true,
+});
+
+productsSchema.virtual("supplier", {
+  ref: "Suppliers",
+  localField: "supplierId",
+  foreignField: "_id",
+  justOne: true,
+});
+
+productsSchema.set("toObject", { virtuals: true });
+// Virtuals in JSON
+productsSchema.set("toJSON", { virtuals: true });
+
 const Products = model("Products", productsSchema);
 module.exports = Products;

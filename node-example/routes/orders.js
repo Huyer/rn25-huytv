@@ -27,9 +27,13 @@ router.get("/", function (req, res, next) {
 
 router.get("/:id", function (req, res, next) {
   try {
-    Orders.findById(req.params.id).then((result) => {
-      res.send(result);
-    });
+    Orders.findById(req.params.id)
+      .populate("orderDetails.product")
+      .populate("customer")
+      .populate("employees")
+      .then((result) => {
+        res.send(result);
+      });
   } catch (error) {
     res.send(error);
   }
@@ -37,12 +41,11 @@ router.get("/:id", function (req, res, next) {
 
 router.patch("/:id", function (req, res, next) {
   const { id } = req.params;
-  const { createdDate, shippedDate, status, description, shippingAddress, paymentType, customerId, employeeId } = req.body;
+  const { shippedDate, status, description, shippingAddress, paymentType, customerId, employeeId, orderDetails } = req.body;
   try {
     Orders.findByIdAndUpdate(
       id,
       {
-        createdDate,
         shippedDate,
         status,
         description,
@@ -50,6 +53,7 @@ router.patch("/:id", function (req, res, next) {
         paymentType,
         customerId,
         employeeId,
+        orderDetails,
       },
       { new: true },
     ).then((result) => {

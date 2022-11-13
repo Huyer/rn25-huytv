@@ -7,7 +7,7 @@ const orderDetailSchema = new Schema({
 });
 
 orderDetailSchema.virtual("product", {
-  ref: "Product",
+  ref: "Products",
   localField: "productId",
   foreignField: "_id",
   justOne: true,
@@ -43,14 +43,14 @@ const ordersSchema = new Schema({
 });
 
 ordersSchema.virtual("customer", {
-  ref: "Customer",
+  ref: "Customers",
   localField: "customerId",
   foreignField: "_id",
   justOne: true,
 });
 
-ordersSchema.virtual("employee", {
-  ref: "Employee",
+ordersSchema.virtual("employees", {
+  ref: "Employees",
   localField: "employeeId",
   foreignField: "_id",
   justOne: true,

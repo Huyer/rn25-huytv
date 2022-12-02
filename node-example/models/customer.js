@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const { Schema, model } = mongoose;
 
-const customersSchema = new Schema({
+const customerSchema = new Schema({
   firstName: { type: String, min: 0, max: 50, require: true },
   lasttName: { type: String, min: 0, max: 50, require: true },
   phoneNumber: { type: String, min: 0, max: 50 },
@@ -10,5 +10,5 @@ const customersSchema = new Schema({
   birthday: Date,
 });
 
-const Customers = model("Customers", customersSchema);
-module.exports = Customers;
+const Customer = model("Customer", customerSchema);
+module.exports = Customer;

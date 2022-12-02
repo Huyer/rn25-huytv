@@ -7,7 +7,7 @@ const orderDetailSchema = new Schema({
 });
 
 orderDetailSchema.virtual("product", {
-  ref: "Products",
+  ref: "Product",
   localField: "productId",
   foreignField: "_id",
   justOne: true,
@@ -16,7 +16,7 @@ orderDetailSchema.virtual("product", {
 orderDetailSchema.set("toObject", { virtuals: true });
 orderDetailSchema.set("toJSON", { virtuals: true });
 
-const ordersSchema = new Schema({
+const orderSchema = new Schema({
   createdDate: { type: Date, require: true, default: Date.now },
   shippedDate: { type: Date },
   status: { type: String, min: 0, max: 50, require: true, default: "WAITING" },
@@ -31,34 +31,34 @@ const ordersSchema = new Schema({
   },
   customerId: {
     type: Schema.Types.ObjectId,
-    ref: "Customers",
+    ref: "Customer",
     required: true,
   },
   employeeId: {
     type: Schema.Types.ObjectId,
-    ref: "Employees",
+    ref: "Employee",
     required: true,
   },
   orderDetails: [orderDetailSchema],
 });
 
-ordersSchema.virtual("customer", {
-  ref: "Customers",
+orderSchema.virtual("customer", {
+  ref: "Customer",
   localField: "customerId",
   foreignField: "_id",
   justOne: true,
 });
 
-ordersSchema.virtual("employees", {
-  ref: "Employees",
+orderSchema.virtual("employee", {
+  ref: "Employee",
   localField: "employeeId",
   foreignField: "_id",
   justOne: true,
 });
 
 // Virtuals in console.log()
-ordersSchema.set("toObject", { virtuals: true });
+orderSchema.set("toObject", { virtuals: true });
 // Virtuals in JSON
-ordersSchema.set("toJSON", { virtuals: true });
-const Oders = model("Oders", ordersSchema);
+orderSchema.set("toJSON", { virtuals: true });
+const Oders = model("Oders", orderSchema);
 module.exports = Oders;

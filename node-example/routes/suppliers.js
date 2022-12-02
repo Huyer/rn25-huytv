@@ -1,12 +1,12 @@
 var express = require("express");
 var router = express.Router();
 const { default: mongoose } = require("mongoose");
-const { Suppliers } = require("../models");
+const { Supplier } = require("../models");
 mongoose.connect("mongodb://localhost:27017/Test");
 
 router.get("/", function (req, res, next) {
   try {
-    Suppliers.find().then((result) => {
+    Supplier.find().then((result) => {
       res.send(result);
     });
   } catch (err) {
@@ -16,7 +16,7 @@ router.get("/", function (req, res, next) {
 
 router.get("/:id", function (req, res, next) {
   try {
-    Suppliers.findById(req.params.id).then((result) => {
+    Supplier.findById(req.params.id).then((result) => {
       res.send(result);
     });
   } catch (error) {
@@ -39,11 +39,7 @@ router.patch("/:id", function (req, res, next) {
   const { id } = req.params;
   const { name, email, phoneNumber, address } = req.body;
   try {
-    Suppliers.findByIdAndUpdate(
-      id,
-      { name, email, phoneNumber, address },
-      { new: true }
-    ).then((result) => {
+    Supplier.findByIdAndUpdate(id, { name, email, phoneNumber, address }, { new: true }).then((result) => {
       res.send(result);
     });
   } catch (error) {
@@ -54,7 +50,7 @@ router.patch("/:id", function (req, res, next) {
 router.delete("/:id", function (req, res, next) {
   try {
     const id = req.params.id;
-    Suppliers.findByIdAndDelete(id).then((result) => {
+    Supplier.findByIdAndDelete(id).then((result) => {
       res.send("xoá thành công");
     });
   } catch (err) {

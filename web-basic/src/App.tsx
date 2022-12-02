@@ -3,6 +3,7 @@ import "./App.css";
 import Detail from "./Components/Detail";
 import List from "./Components/List";
 import Form1 from "./Components/Form";
+import TestCallAPI from "./Components/TestCallAPI";
 
 function App() {
   return (
@@ -26,7 +27,7 @@ function App() {
           </div>
         </div>
         <Routes>
-          <Route path="/" element={<List />} />
+          <Route path="/" element={<TestCallAPI />} />
           <Route path="/form" element={<Form1 />} />
           <Route path="/detail/:id" element={<Detail />} />
         </Routes>

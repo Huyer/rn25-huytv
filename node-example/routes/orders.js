@@ -1,7 +1,7 @@
 var express = require("express");
 var router = express.Router();
 const { default: mongoose } = require("mongoose");
-const { Orders } = require("../models");
+const { Order } = require("../models");
 mongoose.connect("mongodb://localhost:27017/Test");
 
 router.post("/", function (req, res, next) {
@@ -17,7 +17,7 @@ router.post("/", function (req, res, next) {
 
 router.get("/", function (req, res, next) {
   try {
-    Orders.find().then((result) => {
+    Order.find().then((result) => {
       res.send(result);
     });
   } catch (err) {
@@ -27,7 +27,7 @@ router.get("/", function (req, res, next) {
 
 router.get("/:id", function (req, res, next) {
   try {
-    Orders.findById(req.params.id)
+    Order.findById(req.params.id)
       .populate("orderDetails.product")
       .populate("customer")
       .populate("employees")
@@ -43,7 +43,7 @@ router.patch("/:id", function (req, res, next) {
   const { id } = req.params;
   const { shippedDate, status, description, shippingAddress, paymentType, customerId, employeeId, orderDetails } = req.body;
   try {
-    Orders.findByIdAndUpdate(
+    Order.findByIdAndUpdate(
       id,
       {
         shippedDate,
@@ -67,7 +67,7 @@ router.patch("/:id", function (req, res, next) {
 router.delete("/:id", function (req, res, next) {
   try {
     const id = req.params.id;
-    Orders.findByIdAndDelete(id).then((result) => {
+    Order.findByIdAndDelete(id).then((result) => {
       res.send("xoá thành công");
     });
   } catch (err) {

@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const { Schema, model } = mongoose;
 
-const employeesSchema = new Schema({
+const employeeSchema = new Schema({
   firstName: { type: String, min: 0, max: 50, require: true },
   lastName: { type: String, min: 0, max: 50, require: true },
   phoneNumber: { type: String, min: 0, max: 50 },
@@ -10,12 +10,12 @@ const employeesSchema = new Schema({
   birthday: Date,
 });
 
-employeesSchema.virtual("fullName").get(function () {
+employeeSchema.virtual("fullName").get(function () {
   return this.firstName + " " + this.lastName;
 });
 
-employeesSchema.set("toObject", { virtuals: true });
-employeesSchema.set("toJSON", { virtuals: true });
+employeeSchema.set("toObject", { virtuals: true });
+employeeSchema.set("toJSON", { virtuals: true });
 
-const Employees = model("Employees", employeesSchema);
-module.exports = Employees;
+const Employee = model("Employee", employeeSchema);
+module.exports = Employee;

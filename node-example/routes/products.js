@@ -1,7 +1,7 @@
 var express = require("express");
 var router = express.Router();
 const { default: mongoose } = require("mongoose");
-const { Products } = require("../models");
+const { Product } = require("../models");
 mongoose.connect("mongodb://localhost:27017/Test");
 
 router.post("/", function (req, res, next) {
@@ -17,7 +17,7 @@ router.post("/", function (req, res, next) {
 
 router.get("/", function (req, res, next) {
   try {
-    Products.find()
+    Product.find()
       .populate("category")
       .populate("supplier")
       .then((result) => {
@@ -30,7 +30,7 @@ router.get("/", function (req, res, next) {
 
 router.get("/:id", function (req, res, next) {
   try {
-    Products.findById(req.params.id)
+    Product.findById(req.params.id)
       .populate("category")
       .populate("supplier")
       .then((result) => {
@@ -45,7 +45,7 @@ router.patch("/:id", function (req, res, next) {
   const { id } = req.params;
   const { name, price, discount, stock, categoryId, supplierId, description } = req.body;
   try {
-    Products.findByIdAndUpdate(id, { name, price, discount, stock, categoryId, supplierId, description }, { new: true }).then((result) => {
+    Product.findByIdAndUpdate(id, { name, price, discount, stock, categoryId, supplierId, description }, { new: true }).then((result) => {
       res.send(result);
     });
   } catch (error) {
@@ -56,7 +56,7 @@ router.patch("/:id", function (req, res, next) {
 router.delete("/:id", function (req, res, next) {
   try {
     const id = req.params.id;
-    Products.findByIdAndDelete(id).then((result) => {
+    Product.findByIdAndDelete(id).then((result) => {
       res.send("xoá thành công");
     });
   } catch (err) {

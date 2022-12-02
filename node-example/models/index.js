@@ -1,15 +1,15 @@
-const Category = require("./categories");
-const Suppliers = require("./suppliers");
-const Customers = require("./customers");
-const Employees = require("./employees");
-const Products = require("./products");
-const Orders = require("./orders");
+const Category = require("./category");
+const Supplier = require("./supplier");
+const Customer = require("./customer");
+const Employee = require("./employee");
+const Product = require("./product");
+const Order = require("./order");
 
 module.exports = {
   Category,
-  Suppliers,
-  Customers,
-  Employees,
-  Products,
-  Orders,
+  Supplier,
+  Customer,
+  Employee,
+  Product,
+  Order,
 };

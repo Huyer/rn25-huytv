@@ -1,7 +1,6 @@
 import { Table, Button, message, Form, Input, Popconfirm, Space, Modal, InputNumber, Select } from "antd";
 import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
-import React, { useEffect } from "react";
-import { text } from "stream/consumers";
+import React from "react";
 
 const Products = () => {
   const [listProduct, setListProduct] = React.useState([]);
@@ -255,28 +254,45 @@ const Products = () => {
           form={updateForm}
           name="update-form"
           labelCol={{ span: 6 }}
-          wrapperCol={{ span: 16 }}
+          wrapperCol={{ span: 18 }}
           initialValues={{ remember: true }}
           onFinish={onUpdateFinish}
           onFinishFailed={onUpdateFinishFailed}
           autoComplete="off"
         >
-          <Form.Item label="Họ" name="firstName" rules={[{ required: true, message: "Họ" }]} hasFeedback>
+          <Form.Item label="Danh mục" name="categoryId" rules={[{ required: true, message: "Chọn nhà cung cấp" }]} hasFeedback>
+            <Select
+              options={
+                listCategories &&
+                listCategories.map((item: any) => {
+                  return { value: item._id, label: item.name };
+                })
+              }
+            />
+          </Form.Item>
+          <Form.Item label="Tên sản phẩm" name="name" rules={[{ required: true, message: "nhập tên sp" }]} hasFeedback>
             <Input />
           </Form.Item>
-          <Form.Item label="Tên" name="lastName" rules={[{ required: true, message: "Tên" }]} hasFeedback>
-            <Input />
+          <Form.Item label="Nhà cung cấp" name="supplierId" rules={[{ required: true, message: "Chọn nhà cung cấp" }]} hasFeedback>
+            <Select
+              options={
+                listSuppliers &&
+                listSuppliers.map((item: any) => {
+                  return { value: item._id, label: item.name };
+                })
+              }
+            />
           </Form.Item>
-          <Form.Item label="Số Điện Thoại" name="phoneNumber" rules={[{ required: true, message: "Số Điện Thoại" }]} hasFeedback>
-            <Input />
+          <Form.Item label="Giá bán" name="price" rules={[{ required: true, message: "nhập giá" }]} hasFeedback>
+            <InputNumber />
           </Form.Item>
-          <Form.Item label="Địa chỉ" name="address" rules={[{ required: true, message: "Địa chỉ" }]} hasFeedback>
-            <Input />
+          <Form.Item label="Giảm giá" name="price" rules={[{ required: false, message: "nhập giảm giá" }]} hasFeedback>
+            <InputNumber />
           </Form.Item>
-          <Form.Item label="Email" name="email" rules={[{ required: true, message: "Nhập email", type: "email" }]} hasFeedback>
-            <Input />
+          <Form.Item label="Tồn kho" name="price" rules={[{ required: true, message: "nhập tồn kho" }]} hasFeedback>
+            <InputNumber />
           </Form.Item>
-          <Form.Item label="Ngày sinh" name="birthday" rules={[{ message: "Ngày sinh" }]}>
+          <Form.Item label="Mô tả" name="description" rules={[{ required: false, message: "nhập tồn kho" }]} hasFeedback>
             <Input />
           </Form.Item>
         </Form>

@@ -168,7 +168,7 @@ const Products = () => {
   ];
 
   const handleDelete = (id: string) => {
-    const url = "http://localhost:9000/Product/" + id;
+    const url = "http://localhost:9000/products/" + id;
     fetch(url, {
       method: "DELETE",
     })
@@ -222,13 +222,13 @@ const Products = () => {
         <Form.Item label="Giá bán" name="price" rules={[{ required: true, message: "nhập giá" }]} hasFeedback>
           <InputNumber />
         </Form.Item>
-        <Form.Item label="Giảm giá" name="price" rules={[{ required: false, message: "nhập giảm giá" }]} hasFeedback>
+        <Form.Item label="Giảm giá" name="discount" rules={[{ required: false, message: "nhập giảm giá" }]} hasFeedback>
           <InputNumber />
         </Form.Item>
-        <Form.Item label="Tồn kho" name="price" rules={[{ required: true, message: "nhập tồn kho" }]} hasFeedback>
+        <Form.Item label="Tồn kho" name="stock" rules={[{ required: true, message: "nhập tồn kho" }]} hasFeedback>
           <InputNumber />
         </Form.Item>
-        <Form.Item label="Mô tả" name="description" rules={[{ required: false, message: "nhập tồn kho" }]} hasFeedback>
+        <Form.Item label="Mô tả" name="description" rules={[{ required: false, message: "nhập mô tả" }]} hasFeedback>
           <Input />
         </Form.Item>
         <Form.Item wrapperCol={{ offset: 2, span: 16 }}>
@@ -286,13 +286,13 @@ const Products = () => {
           <Form.Item label="Giá bán" name="price" rules={[{ required: true, message: "nhập giá" }]} hasFeedback>
             <InputNumber />
           </Form.Item>
-          <Form.Item label="Giảm giá" name="price" rules={[{ required: false, message: "nhập giảm giá" }]} hasFeedback>
+          <Form.Item label="Giảm giá" name="discount" rules={[{ required: false, message: "nhập giảm giá" }]} hasFeedback>
             <InputNumber />
           </Form.Item>
-          <Form.Item label="Tồn kho" name="price" rules={[{ required: true, message: "nhập tồn kho" }]} hasFeedback>
+          <Form.Item label="Tồn kho" name="stock" rules={[{ required: true, message: "nhập tồn kho" }]} hasFeedback>
             <InputNumber />
           </Form.Item>
-          <Form.Item label="Mô tả" name="description" rules={[{ required: false, message: "nhập tồn kho" }]} hasFeedback>
+          <Form.Item label="Mô tả" name="description" rules={[{ required: false, message: "nhập mô tả" }]} hasFeedback>
             <Input />
           </Form.Item>
         </Form>

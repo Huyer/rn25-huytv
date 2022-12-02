@@ -1,20 +1,22 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { MenuOutlined, UnorderedListOutlined, UserAddOutlined, PoweroffOutlined } from "@ant-design/icons";
+import { MenuOutlined, UserOutlined, UserAddOutlined, PoweroffOutlined, FileDoneOutlined } from "@ant-design/icons";
 import { Menu } from "antd";
 import Content from "./Content";
 
 function SideMenu() {
   const navi = useNavigate();
   const items = [
-    { label: "Category", key: "/", icon: <MenuOutlined /> },
-    { label: "Dashboard", key: "/dashboard", icon: <MenuOutlined /> },
+    { label: "Danh sách sản phẩm", key: "/", icon: <MenuOutlined /> },
+    { label: "Danh mục sản phẩm", key: "/categories", icon: <MenuOutlined /> },
+    { label: "Nhà cung cấp", key: "/suppliers", icon: <MenuOutlined /> },
     {
-      label: "Users List",
-      key: "/userslist",
-      icon: <UnorderedListOutlined />,
+      label: "Danh sách nhân viên",
+      key: "/employee",
+      icon: <UserOutlined />,
     },
-    { label: "Profile", key: "/profile", icon: <UserAddOutlined /> },
+    { label: "Danh sách khách hàng", key: "/customers", icon: <UserAddOutlined /> },
+    { label: "Đơn hàng", key: "/orders", icon: <FileDoneOutlined /> },
     {
       label: "Signout",
       key: "signout",
@@ -28,7 +30,7 @@ function SideMenu() {
         className="w-1/6"
         onClick={(key) => {
           if (key.key === "signout") {
-            //sign out funtionc
+            //sign out funtionc here
           } else navi(key.key);
         }}
         items={items}

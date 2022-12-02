@@ -2,14 +2,14 @@ import { Table, Button, message, Form, Input, Popconfirm, Space, Modal } from "a
 import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
 import React, { useEffect } from "react";
 
-const ListEmloyees = () => {
-  const [listEmployees, setListEmployees] = React.useState([]);
+const Categories = () => {
+  const [categories, setCategories] = React.useState([]);
   const [reFresh, setReFresh] = React.useState(0);
   const [selectedRecord, setSelectedRecord] = React.useState<any>({});
   const [editFormVisible, setEditFormVisible] = React.useState(false);
 
   const onFinish = (values: any) => {
-    fetch("http://localhost:9000/employees", {
+    fetch("http://localhost:9000/categories", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -33,7 +33,7 @@ const ListEmloyees = () => {
   };
 
   const onUpdateFinish = (values: any) => {
-    fetch("http://localhost:9000/employees/" + selectedRecord._id, {
+    fetch("http://localhost:9000/categories/" + selectedRecord._id, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
@@ -57,12 +57,12 @@ const ListEmloyees = () => {
   };
 
   React.useEffect(() => {
-    fetch("http://localhost:9000/employees", {
+    fetch("http://localhost:9000/categories", {
       method: "GET",
     })
       .then((response) => response.json())
       .then((json) => {
-        setListEmployees(json);
+        setCategories(json);
       })
       .catch((error) => {
         console.error(error);
@@ -71,27 +71,14 @@ const ListEmloyees = () => {
 
   const columns = [
     {
-      title: "Full Name",
-      dataIndex: "fullName",
-      key: "fullName",
+      title: "Tên danh mục",
+      dataIndex: "name",
+      key: "name",
     },
     {
-      title: "Phone",
-      dataIndex: "phoneNumber",
-      key: "phoneNumber",
-    },
-    {
-      title: "Address",
-      dataIndex: "address",
-      key: "address",
-      render: (text: any) => {
-        return <em>{text}</em>;
-      },
-    },
-    {
-      title: "Email",
-      dataIndex: "email",
-      key: "email",
+      title: "Mô tả",
+      dataIndex: "description",
+      key: "description",
     },
     {
       key: "action",
@@ -124,7 +111,7 @@ const ListEmloyees = () => {
   ];
 
   const handleDelete = (id: string) => {
-    const url = "http://localhost:9000/employees/" + id;
+    const url = "http://localhost:9000/categories/" + id;
     fetch(url, {
       method: "DELETE",
     })
@@ -152,22 +139,10 @@ const ListEmloyees = () => {
         onFinishFailed={onFinishFailed}
         autoComplete="off"
       >
-        <Form.Item label="Họ" name="firstName" rules={[{ required: true, message: "Họ" }]} hasFeedback>
+        <Form.Item label="Tên danh mục" name="name" rules={[{ required: true, message: "Tên" }]} hasFeedback>
           <Input />
         </Form.Item>
-        <Form.Item label="Tên" name="lastName" rules={[{ required: true, message: "Tên" }]} hasFeedback>
-          <Input />
-        </Form.Item>
-        <Form.Item label="Số Điện Thoại" name="phoneNumber" rules={[{ required: true, message: "Số Điện Thoại" }]} hasFeedback>
-          <Input />
-        </Form.Item>
-        <Form.Item label="Địa chỉ" name="address" rules={[{ required: true, message: "Địa chỉ" }]} hasFeedback>
-          <Input />
-        </Form.Item>
-        <Form.Item label="Email" name="email" rules={[{ required: true, message: "Nhập email", type: "email" }]} hasFeedback>
-          <Input />
-        </Form.Item>
-        <Form.Item label="Năm sinh" name="yearOfBirth" rules={[{ message: "Năm sinh" }]}>
+        <Form.Item label="Mô tả" name="description" rules={[{ required: true, message: "Mô tả" }]} hasFeedback>
           <Input />
         </Form.Item>
         <Form.Item wrapperCol={{ offset: 2, span: 16 }}>
@@ -176,7 +151,7 @@ const ListEmloyees = () => {
           </Button>
         </Form.Item>
       </Form>
-      <Table dataSource={listEmployees} columns={columns} rowKey={"id"} />
+      <Table dataSource={categories} columns={columns} rowKey={"id"} />
 
       <Modal
         centered
@@ -199,22 +174,10 @@ const ListEmloyees = () => {
           onFinishFailed={onUpdateFinishFailed}
           autoComplete="off"
         >
-          <Form.Item label="Họ" name="firstName" rules={[{ required: true, message: "Họ" }]} hasFeedback>
+          <Form.Item label="Tên danh mục" name="name" rules={[{ required: true, message: "Tên" }]} hasFeedback>
             <Input />
           </Form.Item>
-          <Form.Item label="Tên" name="lastName" rules={[{ required: true, message: "Tên" }]} hasFeedback>
-            <Input />
-          </Form.Item>
-          <Form.Item label="Số Điện Thoại" name="phoneNumber" rules={[{ required: true, message: "Số Điện Thoại" }]} hasFeedback>
-            <Input />
-          </Form.Item>
-          <Form.Item label="Địa chỉ" name="address" rules={[{ required: true, message: "Địa chỉ" }]} hasFeedback>
-            <Input />
-          </Form.Item>
-          <Form.Item label="Email" name="email" rules={[{ required: true, message: "Nhập email", type: "email" }]} hasFeedback>
-            <Input />
-          </Form.Item>
-          <Form.Item label="Năm sinh" name="yearOfBirth" rules={[{ message: "Năm sinh" }]}>
+          <Form.Item label="Mô tả" name="description" rules={[{ required: true, message: "Mô tả" }]} hasFeedback>
             <Input />
           </Form.Item>
         </Form>
@@ -223,4 +186,4 @@ const ListEmloyees = () => {
   );
 };
 
-export default ListEmloyees;
+export default Categories;

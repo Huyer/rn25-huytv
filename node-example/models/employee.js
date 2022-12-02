@@ -7,7 +7,7 @@ const employeeSchema = new Schema({
   phoneNumber: { type: String, min: 0, max: 50 },
   address: { type: String, min: 0, max: 500, require: true },
   email: { type: String, min: 0, max: 50, require: true },
-  birthday: Date,
+  yearOfBirth: String,
 });
 
 employeeSchema.virtual("fullName").get(function () {

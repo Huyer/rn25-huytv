@@ -26,7 +26,7 @@ router.get("/:id", function (req, res, next) {
 
 router.post("/", function (req, res, next) {
   try {
-    const newItem = new Suppliers(req.body);
+    const newItem = new Supplier(req.body);
     newItem.save().then((result) => {
       res.send(result);
     });

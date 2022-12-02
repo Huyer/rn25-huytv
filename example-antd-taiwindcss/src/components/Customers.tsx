@@ -2,14 +2,14 @@ import { Table, Button, message, Form, Input, Popconfirm, Space, Modal } from "a
 import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
 import React, { useEffect } from "react";
 
-const ListEmloyees = () => {
-  const [listEmployees, setListEmployees] = React.useState([]);
+const Customers = () => {
+  const [customers, setCustomers] = React.useState([]);
   const [reFresh, setReFresh] = React.useState(0);
   const [selectedRecord, setSelectedRecord] = React.useState<any>({});
   const [editFormVisible, setEditFormVisible] = React.useState(false);
 
   const onFinish = (values: any) => {
-    fetch("http://localhost:9000/employees", {
+    fetch("http://localhost:9000/customers", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -33,7 +33,7 @@ const ListEmloyees = () => {
   };
 
   const onUpdateFinish = (values: any) => {
-    fetch("http://localhost:9000/employees/" + selectedRecord._id, {
+    fetch("http://localhost:9000/customers/" + selectedRecord._id, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
@@ -57,12 +57,12 @@ const ListEmloyees = () => {
   };
 
   React.useEffect(() => {
-    fetch("http://localhost:9000/employees", {
+    fetch("http://localhost:9000/customers", {
       method: "GET",
     })
       .then((response) => response.json())
       .then((json) => {
-        setListEmployees(json);
+        setCustomers(json);
       })
       .catch((error) => {
         console.error(error);
@@ -71,17 +71,17 @@ const ListEmloyees = () => {
 
   const columns = [
     {
-      title: "Full Name",
+      title: "Họ và tên",
       dataIndex: "fullName",
       key: "fullName",
     },
     {
-      title: "Phone",
+      title: "Số điện thoại",
       dataIndex: "phoneNumber",
       key: "phoneNumber",
     },
     {
-      title: "Address",
+      title: "Địa chỉ",
       dataIndex: "address",
       key: "address",
       render: (text: any) => {
@@ -92,6 +92,11 @@ const ListEmloyees = () => {
       title: "Email",
       dataIndex: "email",
       key: "email",
+    },
+    {
+      title: "Năm sinh",
+      dataIndex: "yearOfBirth",
+      key: "yearOfBirth",
     },
     {
       key: "action",
@@ -124,7 +129,7 @@ const ListEmloyees = () => {
   ];
 
   const handleDelete = (id: string) => {
-    const url = "http://localhost:9000/employees/" + id;
+    const url = "http://localhost:9000/customers/" + id;
     fetch(url, {
       method: "DELETE",
     })
@@ -176,7 +181,7 @@ const ListEmloyees = () => {
           </Button>
         </Form.Item>
       </Form>
-      <Table dataSource={listEmployees} columns={columns} rowKey={"id"} />
+      <Table dataSource={customers} columns={columns} rowKey={"id"} />
 
       <Modal
         centered
@@ -223,4 +228,4 @@ const ListEmloyees = () => {
   );
 };
 
-export default ListEmloyees;
+export default Customers;

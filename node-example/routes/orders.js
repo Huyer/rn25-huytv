@@ -6,7 +6,7 @@ mongoose.connect("mongodb://localhost:27017/Test");
 
 router.post("/", function (req, res, next) {
   try {
-    const newItem = new Orders(req.body);
+    const newItem = new Order(req.body);
     newItem.save().then((result) => {
       res.send(result);
     });

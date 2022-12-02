@@ -6,7 +6,7 @@ mongoose.connect("mongodb://localhost:27017/Test");
 
 router.post("/", function (req, res, next) {
   try {
-    const newItem = new Customers(req.body);
+    const newItem = new Customer(req.body);
     newItem.save().then((result) => {
       res.send(result);
     });
@@ -37,9 +37,9 @@ router.get("/:id", function (req, res, next) {
 
 router.patch("/:id", function (req, res, next) {
   const { id } = req.params;
-  const { firstName, lastName, address, email, birthday } = req.body;
+  const { firstName, lastName, address, email, yearOfBirth, phoneNumber } = req.body;
   try {
-    Customer.findByIdAndUpdate(id, { firstName, lastName, address, email, birthday }, { new: true }).then((result) => {
+    Customer.findByIdAndUpdate(id, { firstName, lastName, address, email, yearOfBirth, phoneNumber }, { new: true }).then((result) => {
       res.send(result);
     });
   } catch (error) {

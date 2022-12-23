@@ -1,7 +1,7 @@
 import React from "react";
 import "./App.css";
-import "antd/dist/antd.css";
-import SideMenu from "./components/SideMenu";
+import "antd/dist/ant.css";
+import SideMenu from "./pages/SideMenu";
 
 function App() {
   return (

@@ -1,5 +1,5 @@
-import { Table, Button, message, Form, Input, Popconfirm, Space, Modal } from "antd";
-import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
+import { Table, Button, message, Form, Input, Popconfirm, Space, Modal, Upload, Image } from "antd";
+import { DeleteOutlined, EditOutlined, UploadOutlined } from "@ant-design/icons";
 import React, { useEffect } from "react";
 
 const ListEmloyees = () => {
@@ -71,6 +71,15 @@ const ListEmloyees = () => {
 
   const columns = [
     {
+      title: "Avatar",
+      key: "imageUrl",
+      dataIndex: "imageUrl",
+      width: "10%",
+      render: (text: any) => {
+        return <Image width={200} src={`http://localhost:9000${text}`} />;
+      },
+    },
+    {
       title: "Full Name",
       dataIndex: "fullName",
       key: "fullName",
@@ -117,6 +126,27 @@ const ListEmloyees = () => {
             >
               <Button danger icon={<DeleteOutlined />} />
             </Popconfirm>
+            <Upload
+              showUploadList={false}
+              name="file"
+              action={"http://localhost:9000/upload/employees/" + record._id}
+              headers={{ authorization: "authorization-text" }}
+              onChange={(info) => {
+                if (info.file.status !== "uploading") {
+                  console.log(info.file, info.fileList);
+                }
+
+                if (info.file.status === "done") {
+                  message.success(`${info.file.name} file uploaded successfully`);
+
+                  setReFresh((f) => f + 1);
+                } else if (info.file.status === "error") {
+                  message.error(`${info.file.name} file upload failed.`);
+                }
+              }}
+            >
+              <Button icon={<UploadOutlined />} />
+            </Upload>
           </Space>
         );
       },

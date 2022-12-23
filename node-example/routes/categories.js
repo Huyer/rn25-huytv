@@ -5,6 +5,7 @@ const { default: mongoose } = require("mongoose");
 const { Category } = require("../models");
 // MONGOOSE
 mongoose.connect("mongodb://localhost:27017/Test");
+const { findDocuments } = require("../helpers/MongoDbHelper");
 
 /* GET users listing. */
 router.get("/", function (req, res, next) {
@@ -42,11 +43,9 @@ router.patch("/:id", function (req, res, next) {
   const { id } = req.params;
   const { name, description } = req.body;
   try {
-    Category.findByIdAndUpdate(id, { name, description }, { new: true }).then(
-      (result) => {
-        res.send(result);
-      }
-    );
+    Category.findByIdAndUpdate(id, { name, description }, { new: true }).then((result) => {
+      res.send(result);
+    });
   } catch (error) {
     res.send(error);
   }
@@ -61,6 +60,39 @@ router.delete("/:id", function (req, res, next) {
   } catch (err) {
     res.send(err);
   }
+});
+
+// ------------------------------------------------------------------------------------------------
+// QUESTIONS 18
+// ------------------------------------------------------------------------------------------------
+router.get("/questions/18", function (req, res) {
+  const aggregate = [
+    {
+      $lookup: {
+        from: "products",
+        let: { id: "$_id" },
+        pipeline: [
+          {
+            $match: {
+              $expr: { $eq: ["$$id", "$categoryId"] },
+            },
+          },
+        ],
+        as: "products",
+      },
+    },
+    {
+      $addFields: { numberOfProducts: { $size: "$products" } },
+    },
+  ];
+
+  findDocuments({ aggregate: aggregate }, "categories")
+    .then((result) => {
+      res.json(result);
+    })
+    .catch((error) => {
+      res.status(400).json(error);
+    });
 });
 
 module.exports = router;

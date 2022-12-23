@@ -2,9 +2,10 @@ import React from "react";
 import { Route, Routes } from "react-router-dom";
 import Categories from "./Categories";
 import Customers from "./Customers";
-import ListEmloyees from "./ListEmloyees";
+import Emloyees from "./Emloyees";
 import Products from "./Products";
 import Suppliers from "./Suppliers";
+import Orders from "./Orders";
 
 function Content() {
   return (
@@ -12,10 +13,10 @@ function Content() {
       <Routes>
         <Route path="/" element={<Products />}></Route>
         <Route path="/categories" element={<Categories />}></Route>
-        <Route path="/employee" element={<ListEmloyees />}></Route>
+        <Route path="/employee" element={<Emloyees />}></Route>
         <Route path="/suppliers" element={<Suppliers />}></Route>
         <Route path="/customers" element={<Customers />}></Route>
-        <Route path="/orders" element={<div>orders</div>}></Route>
+        <Route path="/orders" element={<Orders />}></Route>
       </Routes>
     </div>
   );
